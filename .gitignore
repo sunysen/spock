@@ -13,3 +13,5 @@ tmp/
 .DS_Store
 .classpath
 .project
+.gradle/
+build/
