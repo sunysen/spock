@@ -6,11 +6,11 @@ import spock.lang.Specification
 
 class StudentsSpec extends Specification {
 
-  def "find student by condition"() {
-    when:
-    Student[] students = [new Student(30, "horance"), new Student(26, "hongsen")]
+    def "find student by condition"() {
+        when:
+        List<Student> students = Arrays.asList(new Student(30, "horance"), new Student(26, "hongsen"));
 
-    then:
-    find(students, { s -> s.getAge() == 30 } ) != null
-  }
+        then:
+        find(students, { s -> s.getAge() == 30 }) != null
+    }
 }
