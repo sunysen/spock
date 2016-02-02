@@ -3,7 +3,7 @@ package com.spock.edu
 import spock.lang.Specification
 
 import static com.spock.edu.FindService.*
-import static com.spock.edu.Matcher.*
+import static Matchers.*
 import static HumanPreicate.*
 
 /**
@@ -21,6 +21,9 @@ class FindServiceSpec extends Specification {
         find(students, name("hongsen")) != null
         find(students, age(eq(18))) != null
         find(students, age(ne(28))) != null
+        find(students, age(lt(14))) != null
+        find(students, age(gt(17))) != null;
+        find(students, age(gt(20))) == Optional.empty();
         find(students, age(ne(28)).and({ s -> "hongsen".equals(s.getName()) })) != null
     }
 }
