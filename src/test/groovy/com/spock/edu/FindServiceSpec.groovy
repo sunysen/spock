@@ -14,7 +14,7 @@ class FindServiceSpec extends Specification {
         then:
         FindService.find(students, { student -> student.getAge() == 30 }) != null
         FindService.find(teachers, { teacher -> teacher.female() }) != null
-        FindService.find(students, { student -> "horance".equals(student.getName()) }) != null
-        FindService.find(students, { student -> "hongsen".equals(student.getName()) }) != null
+        FindService.find(students, StudentPreicate.name("hongsen")) != null
+        FindService.find(students, StudentPreicate.age(30)) != null
     }
 }
