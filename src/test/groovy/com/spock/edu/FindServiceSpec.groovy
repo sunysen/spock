@@ -2,6 +2,10 @@ package com.spock.edu
 
 import spock.lang.Specification
 
+import static com.spock.edu.FindService.*
+import static com.spock.edu.Matcher.*
+import static com.spock.edu.StudentPreicate.*
+
 /**
  * Created by hongsen on 16/2/1.
  */
@@ -12,9 +16,11 @@ class FindServiceSpec extends Specification {
         List<Teacher> teachers = Arrays.asList(new Teacher(false), new Teacher(true))
 
         then:
-        FindService.find(students, { student -> student.getAge() == 30 }) != null
-        FindService.find(teachers, { teacher -> teacher.female() }) != null
-        FindService.find(students, StudentPreicate.name("hongsen")) != null
-        FindService.find(students, StudentPreicate.age(30)) != null
+        find(students, { student -> student.getAge() == 30 }) != null
+        find(teachers, { teacher -> teacher.female() }) != null
+        find(students, name("hongsen")) != null
+        find(students, age(eq(30))) != null
+        find(students, age(ne(28))) != null
+        find(students, age(ne(28)).and({ s -> "hongsen".equals(s.getName()) })) != null
     }
 }

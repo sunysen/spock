@@ -7,8 +7,8 @@ public class StudentPreicate {
     private StudentPreicate() {
     }
 
-    public static Predicate<Student> age(int age) {
-        return s -> s.getAge() == age;
+    public static Predicate<Student> age(Matcher<Integer> matcher) {
+        return s -> matcher.matched(s.getAge());
     }
 
     public static Predicate<Student> name(String name) {
