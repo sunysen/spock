@@ -12,7 +12,9 @@ class FindServiceSpec extends Specification {
         List<Teacher> teachers = Arrays.asList(new Teacher(false), new Teacher(true))
 
         then:
-        FindService.find(students, { student -> student.getAge() == 30 })
-        FindService.find(teachers, { teacher -> teacher.female() })
+        FindService.find(students, { student -> student.getAge() == 30 }) != null
+        FindService.find(teachers, { teacher -> teacher.female() }) != null
+        FindService.find(students, { student -> "horance".equals(student.getName()) }) != null
+        FindService.find(students, { student -> "hongsen".equals(student.getName()) }) != null
     }
 }
