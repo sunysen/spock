@@ -13,6 +13,18 @@ public final class Matchers {
         return actual -> !expected.equals(actual);
     }
 
+    public static Matcher<String> contains(String expected) {
+        return actual -> expected.contains(expected);
+    }
+
+    public static Matcher<String> starts(String expected) {
+        return actual -> expected.startsWith(expected);
+    }
+
+    public static Matcher<String> startsIgnoringCase(String expected) {
+        return actual -> expected.toLowerCase().startsWith(expected);
+    }
+
     public static <T extends Comparable<? super T>> Matcher<T> gt(T expected) {
         return actual -> compare(actual, expected) > 0;
     }

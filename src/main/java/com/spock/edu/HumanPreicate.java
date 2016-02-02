@@ -11,7 +11,7 @@ public class HumanPreicate {
         return s -> matcher.matched(s.getAge());
     }
 
-    public static Predicate<Human> name(String name) {
-        return s -> name.equals(s.getName());
+    public static Predicate<Human> name(Matcher<String> matcher) {
+        return s -> matcher.matched(s.getName());
     }
 }
