@@ -20,14 +20,17 @@ class FindServiceSpec extends Specification {
         find(students, { student -> student.getAge() == 18 }) != null
         find(teachers, { teacher -> teacher.isFemale() }) != null
         find(students, age(eq(18))) != null
-        find(students, age(ne(28))) != null
+        find(students, age(not(28))) != null
         find(students, age(lt(14))) != null
         find(students, age(gt(17))) != null;
         find(students, name(contains("hor"))) != null;
         find(students, name(starts("hong"))) != null;
         find(students, name(startsIgnoringCase("TO"))) != null;
         find(students, age(gt(20))) == Optional.empty();
-        find(students, age(ne(28)).and({ s -> "hongsen".equals(s.getName()) })) != null
+        find(students, age(not(28)).and({ s -> "hongsen".equals(s.getName()) })) != null
+        find(students, name(anyof(starts("hong"), contains("xxx")))) != null
+        find(students, name(allof(starts("hong"), contains("sen")))) != null
+        find(students, name(allof(starts("hong"), contains("xxx")))) == Optional.empty()
     }
 
 }
